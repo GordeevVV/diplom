@@ -6,13 +6,13 @@ import java.util.Set;
 public class NFATest {
     public static void main(String[] args) {
         String regex = "(a|b)*";
+        //Преобразуем в НКА
         NFA resultNFA = RegexParser.parseRegexToNFA(regex);
         printNFAInfo(resultNFA);
 
         // Преобразуем в ДКА
         DFA dfa = NFAToDFAConverter.convert(resultNFA);
 
-        // Выводим результат
         System.out.println("DFA:");
         System.out.println(dfa);
 
