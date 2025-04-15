@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class NFATest {
     public static void main(String[] args) {
-        String regex = "a|b.c*||d";
+        String regex = "(a|b)*";
         NFA resultNFA = RegexParser.parseRegexToNFA(regex);
         printNFAInfo(resultNFA);
 
@@ -15,6 +15,12 @@ public class NFATest {
         // Выводим результат
         System.out.println("DFA:");
         System.out.println(dfa);
+
+        String[] testCases = {"", "a", "ab", "aba", "ba", "b", "abc"};
+        for (String test : testCases) {
+            boolean accepted = dfa.matches(test);
+            System.out.printf("Строка \"%s\" %s%n", test, accepted ? "принята" : "отклонена");
+        }
     }
 
     private static void printNFAInfo(NFA nfa) {
