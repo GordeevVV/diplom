@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class NFATest {
     public static void main(String[] args) {
-        String regex = "a|b.c*||d"; // Ваше регулярное выражение
+        String regex = "a|b.c*||d";
         NFA resultNFA = RegexParser.parseRegexToNFA(regex);
         printNFAInfo(resultNFA);
 
