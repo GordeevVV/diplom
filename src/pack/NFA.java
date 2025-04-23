@@ -47,4 +47,26 @@ public class NFA {
     public Map<Integer, Map<Character, Set<Integer>>> getTransitions() {
         return transitions;
     }
+
+    @Override
+    public String toString() {
+        String res = "";
+        res += "Start state: " + startState + "\n";
+        res += "States: " + states.size() + "\n";
+        res += "Transitions: " + transitions.size() + "\n";
+        res += "Transitions:" + "\n";
+
+        for (Integer from : transitions.keySet()) {
+            Map<Character, Set<Integer>> transitions = getTransitions().get(from);
+            for (Character symbol : transitions.keySet()) {
+                String sym = symbol == null ? "ε" : symbol.toString();
+                for (Integer to : transitions.get(symbol)) {
+                    res += STR."""
+                        \{from}--\{sym}-->\{to}
+                        """;
+                }
+            }
+        }
+        return res;
+    }
 }
